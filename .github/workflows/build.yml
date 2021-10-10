@@ -1,0 +1,15 @@
+name: GitHub Actions for rpython
+on: [push]
+jobs:
+  my_first_job:
+    steps:
+      - name: Set selected color
+        uses: docker://alpine:3.8
+        run: echo '::set-output name=SELECTED_COLOR::green'
+        id: random-color-generator
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: path/to/artifact/ 
+
+
