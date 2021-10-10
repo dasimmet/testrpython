@@ -4,14 +4,16 @@ jobs:
   my_first_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Set selected color
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Use alpine image 
         uses: docker://alpine:3.8
-      - name:
+      - name: Set selected color
         run: echo '::set-output name=SELECTED_COLOR::green'
         id: random-color-generator
       - uses: actions/upload-artifact@v2
         with:
           name: repo upload
-          path: ./
+          path: ${{ github.repository }}/
 
 
